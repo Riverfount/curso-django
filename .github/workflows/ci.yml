@@ -30,4 +30,9 @@ jobs:
           poetry run flake8 .
       - name: Testing with Pytest
         run: |
-          poetry run pytest
+          poetry run pytest --cov=pypro
+      - name: Posting Coverage
+        env:
+          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+        run: |
+          poetry run codecov
